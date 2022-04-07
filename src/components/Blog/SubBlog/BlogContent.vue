@@ -21,14 +21,11 @@ const pagesSplit = reactive({
     setCategory: function(value,index) {
         const data = this.data.filter(item=>item.category.includes(value))
         this.data = data;
-        // this.length=data.length;
-        // if(index>this.length) {
-
-        //     this.index= 1;
-        // } else {
-        //     this.index= index;
-        // }
+   
     }
+})
+const {domain} = reactive({
+    domain: window.location.host
 })
 onBeforeMount(()=>{
     pagesSplit.setData(blogData.slice(0,3))
@@ -44,14 +41,14 @@ const content = reactive({
         
         <!-- Blog -->
 
-
+localhost:3000/blog
         <div class="flex flex-col w-full">
             <div class="" v-for="(item,index) in pagesSplit.data" :key="index">
                 <div class="mt-[50px]"></div>
-                <a :href="'http://localhost:3000/blog/'+item.id">
-                <div class=" ">
-                    <img :src="item.img" class="w-full h-full fit-cover" alt="">
-                </div>
+                <a :href="'http://'+domain+'/blog/'+item.id">
+                    <div class=" ">
+                        <img :src="item.img" class="w-full h-full fit-cover" alt="">
+                    </div>
                 </a>
                 <div class="mt-[20px]"></div>
                 <div class="flex ">
@@ -69,14 +66,14 @@ const content = reactive({
 
                     </div>
                 </div>
-                 <a :href="'http://localhost:3000/blog/'+item.id" class="">
+                 <a :href="'http://'+domain+'/blog/'+item.id" class="">
                  
                 <div class="text-[40px] ml-[20px] font-semibold">{{item.title}}</div>
                  </a>
 
                 <div class="ml-[20px]">
                     {{content.payload.slice(0,80)+'....'}}
-                      <a :href="'http://localhost:3000/blog/'+item.id" class="text-blue-500">xem thêm</a>
+                      <a :href="'http://'+domain+'/blog/'+item.id" class="text-blue-500">xem thêm</a>
                 </div>
             </div>
         </div> 

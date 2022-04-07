@@ -12,21 +12,15 @@ const detailBlog = reactive({
 })
 
 const {push,replace} = useRouter()
-const {navigate }= reactive({
-    navigate:(a)=>{
-        replace({path:`/blog/${a}`})
-    }
-
+const {domain} = reactive({
+    domain: window.location.host
 })
-
-
 
 
 onBeforeMount(()=>{
     detailBlog.data = state.StoreBlog.data.filter(item=>item.id==route.params.id)[0]
     detailBlog.refer = state.StoreBlog.data.slice(state.StoreBlog.data.length-5,state.StoreBlog.data.length-1)
-    console.log( detailBlog.refer)
-    // console.log(detailBlog.data);
+   
 })
 </script>
 <template>
@@ -102,7 +96,7 @@ onBeforeMount(()=>{
 
             <div class="" v-for="(item,index) in detailBlog.refer" :key="index">
             
-                <a :href="'http://localhost:3000/blog/'+item.id">
+                <a :href="'http://'+domain+'/blog/'+item.id">
                 
                     <div  class="mt-[30px] bg-gray-300 rounded-lg pb-3">
                         <!-- Image -->
