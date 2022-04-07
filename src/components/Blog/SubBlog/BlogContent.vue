@@ -41,7 +41,7 @@ const content = reactive({
         
         <!-- Blog -->
 
-localhost:3000/blog
+
         <div class="flex flex-col w-full">
             <div class="" v-for="(item,index) in pagesSplit.data" :key="index">
                 <div class="mt-[50px]"></div>
